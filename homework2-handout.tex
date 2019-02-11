@@ -1,0 +1,539 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 2},
+            pdfauthor={PSTAT 131/231, Winter 2019},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Homework 2}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{PSTAT 131/231, Winter 2019}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{\textbf{Due on Sunday February 10, 2019 at 11:59 pm}}
+
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spam <-}\StringTok{ }\KeywordTok{read_table2}\NormalTok{(}\StringTok{"spambase.tab"}\NormalTok{, }\DataTypeTok{guess_max=}\DecValTok{2000}\NormalTok{)}
+\NormalTok{spam <-}\StringTok{ }\NormalTok{spam }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{y =} \KeywordTok{factor}\NormalTok{(y, }\DataTypeTok{levels=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"good"}\NormalTok{, }\StringTok{"spam"}\NormalTok{))) }\OperatorTok{%>%}\StringTok{   }\CommentTok{# label as factors}
+\StringTok{    }\KeywordTok{mutate_at}\NormalTok{(}\DataTypeTok{.vars=}\KeywordTok{vars}\NormalTok{(}\OperatorTok{-}\NormalTok{y), }\DataTypeTok{.funs=}\NormalTok{scale)                               }\CommentTok{# scale others}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{k-nearest-neighbor-method}{%
+\section{K-Nearest Neighbor Method}\label{k-nearest-neighbor-method}}
+
+\hypertarget{problem-1}{%
+\subsection{Problem 1:}\label{problem-1}}
+
+\hypertarget{cross-validation-10-times-with-do-chunk-for-each-nieghbor-k}{%
+\subsubsection{Cross Validation 10 times with do chunk for each nieghbor
+(K)}\label{cross-validation-10-times-with-do-chunk-for-each-nieghbor-k}}
+
+\begin{verbatim}
+##     train.error  val.error neighbor
+## 1  0.0003086420 0.09695291        1
+## 2  0.0000000000 0.10555556        1
+## 3  0.0003085467 0.08611111        1
+## 4  0.0003085467 0.13055556        1
+## 5  0.0000000000 0.09166667        1
+## 6  0.0000000000 0.11388889        1
+## 7  0.0003085467 0.08611111        1
+## 8  0.0006170935 0.10555556        1
+## 9  0.0006170935 0.09444444        1
+## 10 0.0006170935 0.10277778        1
+## 11 0.0808641975 0.10249307       10
+## 12 0.0851589016 0.10000000       10
+## 13 0.0814563406 0.09722222       10
+## 14 0.0811477939 0.10555556       10
+## 15 0.0839247146 0.09444444       10
+## 16 0.0845418081 0.08055556       10
+## 17 0.0885529158 0.11111111       10
+## 18 0.0882443690 0.10000000       10
+## 19 0.0814563406 0.07777778       10
+## 20 0.0802221537 0.12222222       10
+## 21 0.0950617284 0.09695291       20
+## 22 0.0962665844 0.11666667       20
+## 23 0.0941067572 0.09166667       20
+## 24 0.0956494909 0.10555556       20
+## 25 0.0965751311 0.10000000       20
+## 26 0.0944153039 0.10555556       20
+## 27 0.0959580376 0.11666667       20
+## 28 0.0944153039 0.10277778       20
+## 29 0.0944153039 0.09166667       20
+## 30 0.0934896637 0.11944444       20
+## 31 0.1040123457 0.10526316       30
+## 32 0.1042887998 0.13333333       30
+## 33 0.1049058932 0.10555556       30
+## 34 0.1027460660 0.11388889       30
+## 35 0.1049058932 0.10833333       30
+## 36 0.0971922246 0.09444444       30
+## 37 0.1033631595 0.13055556       30
+## 38 0.1064486270 0.10555556       30
+## 39 0.1049058932 0.11666667       30
+## 40 0.1030546128 0.12500000       30
+## 41 0.1163580247 0.11080332       40
+## 42 0.1144708423 0.14166667       40
+## 43 0.1123110151 0.10833333       40
+## 44 0.1098426412 0.11666667       40
+## 45 0.1147793891 0.10555556       40
+## 46 0.1144708423 0.10833333       40
+## 47 0.1126195619 0.14444444       40
+## 48 0.1178648565 0.11944444       40
+## 49 0.1144708423 0.11388889       40
+## 50 0.1107682814 0.12777778       40
+## 51 0.1191358025 0.11911357       50
+## 52 0.1209503240 0.15000000       50
+## 53 0.1144708423 0.11944444       50
+## 54 0.1157050293 0.12222222       50
+## 55 0.1206417772 0.09166667       50
+## 56 0.1212588707 0.09722222       50
+## 57 0.1172477630 0.13888889       50
+## 58 0.1187904968 0.13055556       50
+## 59 0.1175563098 0.11388889       50
+## 60 0.1147793891 0.13888889       50
+\end{verbatim}
+
+\hypertarget{find-best-k-the-average-from-10-folds}{%
+\subsubsection{Find best K (the average from 10
+folds)}\label{find-best-k-the-average-from-10-folds}}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   neighbor train.error val.error
+##      <dbl>       <dbl>     <dbl>
+## 1        1    0.000309    0.101 
+## 2       10    0.0836      0.0991
+## 3       20    0.0950      0.105 
+## 4       30    0.104       0.114 
+## 5       40    0.114       0.120 
+## 6       50    0.118       0.122
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+
+\hypertarget{problem-2}{%
+\subsection{Problem 2:}\label{problem-2}}
+
+\hypertarget{find-error-on-optimal-k}{%
+\subsubsection{Find error on optimal K}\label{find-error-on-optimal-k}}
+
+\begin{verbatim}
+##          train.error test.error
+## knn       0.07914468      0.094
+## tree              NA         NA
+## logistic          NA         NA
+\end{verbatim}
+
+\hypertarget{decision-tree-method}{%
+\section{Decision Tree Method}\label{decision-tree-method}}
+
+\hypertarget{problem-3-make-tree}{%
+\subsection{Problem 3: Make Tree}\label{problem-3-make-tree}}
+
+\begin{verbatim}
+## 
+## Classification tree:
+## tree(formula = as.factor(y) ~ ., data = spam.train, control = tree.control(nrow(spam.train), 
+##     minsize = 5, mindev = 1e-05))
+## Variables actually used in tree construction:
+##  [1] "char_freq_..3"              "word_freq_remove"          
+##  [3] "char_freq_..4"              "word_freq_george"          
+##  [5] "word_freq_hp"               "capital_run_length_longest"
+##  [7] "word_freq_receive"          "word_freq_free"            
+##  [9] "word_freq_direct"           "capital_run_length_average"
+## [11] "word_freq_re"               "word_freq_you"             
+## [13] "capital_run_length_total"   "word_freq_credit"          
+## [15] "word_freq_our"              "word_freq_your"            
+## [17] "word_freq_will"             "char_freq_..1"             
+## [19] "word_freq_meeting"          "word_freq_1999"            
+## [21] "word_freq_make"             "word_freq_hpl"             
+## [23] "char_freq_."                "word_freq_over"            
+## [25] "word_freq_font"             "word_freq_report"          
+## [27] "word_freq_money"            "word_freq_address"         
+## [29] "word_freq_all"              "word_freq_000"             
+## [31] "word_freq_data"             "word_freq_project"         
+## [33] "word_freq_people"           "word_freq_email"           
+## [35] "word_freq_415"              "word_freq_edu"             
+## [37] "word_freq_technology"       "word_freq_mail"            
+## [39] "word_freq_business"         "char_freq_..2"             
+## [41] "word_freq_order"            "char_freq_..5"             
+## Number of terminal nodes:  184 
+## Residual mean deviance:  0.04748 = 162.2 / 3417 
+## Misclassification error rate: 0.01333 = 48 / 3601
+\end{verbatim}
+
+\hypertarget{problem-4-pruning-the-tree}{%
+\subsection{Problem 4: Pruning the
+Tree}\label{problem-4-pruning-the-tree}}
+
+\hypertarget{problem-5}{%
+\subsection{Problem 5:}\label{problem-5}}
+
+\hypertarget{fold-cross-validation-on-tree.-size-vs.-misclassification-error}{%
+\subsubsection{10-Fold Cross Validation on Tree. Size
+vs.~Misclassification
+Error}\label{fold-cross-validation-on-tree.-size-vs.-misclassification-error}}
+
+\hypertarget{problem-6}{%
+\subsection{Problem 6:}\label{problem-6}}
+
+\hypertarget{training-and-test-errors}{%
+\subsubsection{Training and Test
+Errors}\label{training-and-test-errors}}
+
+\hypertarget{logisitc-regression}{%
+\section{Logisitc Regression}\label{logisitc-regression}}
+
+\hypertarget{problem-7}{%
+\subsection{Problem 7:}\label{problem-7}}
+
+\hypertarget{a.-logit-function}{%
+\subsubsection{a. Logit Function}\label{a.-logit-function}}
+
+Let \(p(z)=\frac{e^z}{1+e^z}=p\), then \[
+\begin{aligned}
+    e^z&=p+pe^z\\
+    e^z(1-p)&=p\\
+    e^z&=\frac{p}{1-p}\\
+    z&=ln(\frac{p}{1-p})
+\end{aligned}
+\] Thus, \$ z(p)=ln(\frac{p}{1-p})\$.
+
+\hypertarget{b.-link-function}{%
+\subsubsection{b. Link Function}\label{b.-link-function}}
+
+Assume \(z = \beta_0 + \beta_1 x_1\) and \(p = logistic(z)\) from above
+and \(\text{odds: } \frac{p}{1-p}\), then \[
+\begin{aligned}
+    \frac{p}{1-p}&=\frac{\frac{e^z}{1+e^z}}{1-\frac{e^z}{1+e^z}}\\
+    &=\frac{\frac{e^z}{1+e^z}}{\frac{1}{1+e^z}}\\
+    &=e^z\\
+\end{aligned}
+\] Which implies \(\text{odds } = e^{\beta_0} e^{\beta_1 x_1}\)
+
+Let \(2x_1\), then we have \[
+\begin{aligned}
+    &=\frac{e^{\beta_0} e^{\beta_1 (x_1+2)}}{e^{\beta_0} e^{\beta_1 x_1}}\\
+    &=e^{2 \beta_1}
+\end{aligned}
+\] Thus a two times increase of \(x_1\) gives us
+\(2x_1 \implies e^{2 \beta_1}\).
+
+For \(\beta_1 < 0\), what does \(p\) approach as
+\(x_1 \rightarrow \infty\)? We have
+\(p = \frac{e^{\beta_0} e^{\beta_1 x_1}}{1+e^{\beta_0} e^{\beta_1 x_1}}\)
+\[
+\begin{aligned}
+    \lim_{x_1\to\infty} p &=\frac{\lim_{x_1\to\infty} e^{\beta_0} e^{\beta_1 x_1}}{1+\lim_{x_1\to\infty} e^{\beta_0} e^{\beta_1 x_1}}\\
+    &= \frac{0}{1+0}\\
+    &= 0\\
+\end{aligned}\\
+\] Thus we have, \(p\) approaches \(0\) as \(x_1 \rightarrow \infty\).
+
+For \(\beta_1 < 0\), what does \(p\) approach as
+\(x_1 \rightarrow -\infty\)? We have
+\(p = \frac{e^{\beta_0} e^{\beta_1 x_1}}{1+e^{\beta_0} e^{\beta_1 x_1}}\)
+\[
+\begin{aligned}
+    \lim_{x_1\to\infty} p &=\frac{\lim_{x_1\to\infty} e^{\beta_0} e^{\beta_1 x_1}}{\lim_{x_1\to\infty}1+e^{\beta_0} e^{\beta_1 x_1}}\\
+    &= \frac{\infty}{\infty}\\
+\end{aligned}\\
+\] Apply L'Hospital
+\(\mathop {\lim }\limits_{x \to c} \frac{{f\left( x \right)}}{{g\left( x \right)}} = \mathop {\lim }\limits_{x \to c} \frac{{f'\left( x \right)}}{{g'\left( x \right)}}\):
+\[
+\begin{aligned}
+    \lim_{x_1\to\infty} p &= \lim_{x_1\to\infty}\frac{e^{\beta_0} \beta_1 e^{\beta_1 x_1}}{e^{\beta_0} \beta_1 e^{\beta_1 x_1}}\\
+    &= \lim_{x_1\to\infty} 1\\
+    &= 1\\
+\end{aligned}\\
+\] Thus, \(p\) approaches \(1\) as \(x_1 \rightarrow -\infty\).
+
+\hypertarget{problem-8}{%
+\subsection{Problem 8:}\label{problem-8}}
+
+\hypertarget{classify-with-logistic-and-obtain-training-and-test-error}{%
+\subsubsection{Classify with Logistic and obtain Training and Test
+Error}\label{classify-with-logistic-and-obtain-training-and-test-error}}
+
+\hypertarget{problem-9}{%
+\subsection{Problem 9}\label{problem-9}}
+
+\hypertarget{roc-curves-for-tree-v-logistic}{%
+\subsubsection{ROC Curves for Tree v
+Logistic}\label{roc-curves-for-tree-v-logistic}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prob.tree =}\StringTok{ }\KeywordTok{predict}\NormalTok{(spam.tree.pruned, spam.test, }\DataTypeTok{type=}\StringTok{"vector"}\NormalTok{) }\CommentTok{# predicted probabilities for each obeservation from spam.test}
+\NormalTok{pred.tree =}\StringTok{ }\KeywordTok{prediction}\NormalTok{(prob.tree[,}\DecValTok{2}\NormalTok{], spam.test}\OperatorTok{$}\NormalTok{y) }\CommentTok{# predict outcomes from prob.tree}
+\NormalTok{perf.tree =}\StringTok{ }\KeywordTok{performance}\NormalTok{(pred.tree, }\DataTypeTok{measure=}\StringTok{"tpr"}\NormalTok{, }\DataTypeTok{x.measure=}\StringTok{"fpr"}\NormalTok{)}
+
+\NormalTok{prob.glm =}\StringTok{ }\KeywordTok{predict}\NormalTok{(glm.logit, spam.test, }\DataTypeTok{type=}\StringTok{"response"}\NormalTok{) }\CommentTok{# predicted probabilities for each obeservation from spam.test}
+\NormalTok{pred.glm =}\StringTok{ }\KeywordTok{prediction}\NormalTok{(prob.glm, spam.test}\OperatorTok{$}\NormalTok{y) }\CommentTok{# predict outcomes from prob.glm}
+\NormalTok{perf.glm =}\StringTok{ }\KeywordTok{performance}\NormalTok{(pred.glm, }\DataTypeTok{measure=}\StringTok{"tpr"}\NormalTok{, }\DataTypeTok{x.measure=}\StringTok{"fpr"}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(perf.tree, }\DataTypeTok{col=}\StringTok{'blue'}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{main=}\StringTok{"ROC Curve for Decision Tree & Logistic Regression"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(perf.glm, }\DataTypeTok{col=}\StringTok{'red'}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{add=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"Decision Tree"}\NormalTok{, }\StringTok{"Logistic Regression"}\NormalTok{), }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{),}\DataTypeTok{lty=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{homework2-handout_files/figure-latex/unnamed-chunk-10-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(tree.auc <-}\StringTok{ }\KeywordTok{performance}\NormalTok{(pred.tree, }\StringTok{"auc"}\NormalTok{)}\OperatorTok{@}\NormalTok{y.values) }\CommentTok{# 0.9578583}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0.9578583
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(glm.auc <-}\StringTok{ }\KeywordTok{performance}\NormalTok{(pred.glm, }\StringTok{"auc"}\NormalTok{)}\OperatorTok{@}\NormalTok{y.values) }\CommentTok{# 0.9758875}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0.9758875
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Looks like the logistic model wins with a higher AUC. }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{problem-10}{%
+\subsection{Problem 10}\label{problem-10}}
+
+When considering time spent on email, efficieny and accuracy are usually
+negatively correlated. However, accuracy oftern supersedes efficieny.
+Thus false positives would be the main concern. Emails that get marked
+as ``spam'' that are not can be very bad for the customer of this spam
+filter.
+
+\hypertarget{problem-11}{%
+\subsection{Problem 11}\label{problem-11}}
+
+\hypertarget{multivariate-normal}{%
+\subsubsection{Multivariate Normal}\label{multivariate-normal}}
+
+If \(\hat{Y}=1\), then \(P(Y=1|X=x) > T\) \[
+\begin{aligned}
+      \frac{f_1(x) \pi_1}{f_1(x) \pi_1 + f_2(x) \pi_2} &> T\\
+      \frac{1}{1+\frac{f_2(x) \pi_2}{f_1(x) \pi_1}} &> T\\
+      \frac{1}{T} &> 1+\frac{f_2(x) \pi_2}{f_1(x) \pi_1}\\
+      \frac{1-T}{T} &> \frac{f_2(x) \pi_2}{f_1(x) \pi_1}\\
+      log(\pi_1)+log(f_1(x))-log(\pi_2)-log(f_2(x)) &> log(\frac{T}{1-T}) \\
+      \text{expanding the log we get} \\ 
+      log(f_k(x)) &= -\frac{1}{2}log(|\Sigma_{k}^{-1}|)+log(\pi_k) \\
+      \text{substituting in } log(f_k(x)) \  k=1,2 \\
+              - \frac{1}{2}(x-\mu_1)^T\Sigma_{1}^{-1}(x-\mu_1) -\frac{1}{2}log(|\Sigma_{1}^{-1}|)+log(\pi_1)\\
+        + \frac{1}{2}(x-\mu_2)^T\Sigma_{2}^{-1}(x-\mu_2) +\frac{1}{2}log(|\Sigma_{2}^{-1}|)-log(\pi_2) &> log(\frac{T}{1-T})\\
+        \delta_1(x)-\delta_2(x) &> log(\frac{T}{1-T})\\
+\end{aligned}\\
+\] We then let \(M(T) = log(\frac{T}{1-T})\), so we have
+\(\delta_1(x)-\delta_2(x) > M(T)\). When
+\(p_{thresh} = \frac{1}{2}, \text{then } M(\frac{1}{2})=log\Bigg( \frac{\frac{1}{2}}{1-\frac{1}{2}} \Bigg) = log \Big( \frac{\frac{1}{2}}{\frac{1}{2}} \Big) = log(1) = 0\).
+The decision threshold is 0 when our probability threshold is
+\(\frac{1}{2}\).
+
+\hypertarget{problem-12-variable-standardization-and-discretization}{%
+\subsection{Problem 12: Variable Standardization and
+Discretization}\label{problem-12-variable-standardization-and-discretization}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{algae =}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(algae, }\KeywordTok{vars}\NormalTok{(colnames[}\DecValTok{4}\OperatorTok{:}\DecValTok{11}\NormalTok{]), }
+                   \KeywordTok{funs}\NormalTok{(}\KeywordTok{log}\NormalTok{(.))) }\CommentTok{# log transform}
+
+\NormalTok{algae =}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(algae, }\KeywordTok{vars}\NormalTok{(colnames[}\DecValTok{4}\OperatorTok{:}\DecValTok{11}\NormalTok{]),  }
+                       \KeywordTok{funs}\NormalTok{(}\KeywordTok{ifelse}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(.), }\KeywordTok{median}\NormalTok{(algae}\OperatorTok{$}\NormalTok{.,}\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{), .))) }\CommentTok{# repalce NA's with medians}
+
+\NormalTok{algae =}\StringTok{ }\KeywordTok{mutate_at}\NormalTok{(algae, }\KeywordTok{vars}\NormalTok{(a1), }\KeywordTok{funs}\NormalTok{(}\KeywordTok{ifelse}\NormalTok{(.}\OperatorTok{>}\FloatTok{0.5}\NormalTok{,}\StringTok{"High"}\NormalTok{,}\StringTok{"Low"}\NormalTok{))) }\CommentTok{# a1 as factor}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{problem-13.-linear-and-quadratic-discriminant-analysis}{%
+\subsection{Problem 13. Linear and Quadratic Discriminant
+Analysis}\label{problem-13.-linear-and-quadratic-discriminant-analysis}}
+
+\hypertarget{a-lda}{%
+\paragraph{a) LDA}\label{a-lda}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{algae.lda =}\StringTok{ }\NormalTok{MASS}\OperatorTok{::}\KeywordTok{lda}\NormalTok{(a1}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{algae, }\DataTypeTok{CV=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{algae.lda.pred =}\StringTok{ }\KeywordTok{prediction}\NormalTok{(algae.lda}\OperatorTok{$}\NormalTok{posterior[,}\DecValTok{2}\NormalTok{], algae}\OperatorTok{$}\NormalTok{a1)}
+\NormalTok{algae.lda.perf =}\StringTok{ }\KeywordTok{performance}\NormalTok{(algae.lda.pred, }\DataTypeTok{measure=}\StringTok{"tpr"}\NormalTok{, }\DataTypeTok{x.measure=}\StringTok{"fpr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{b-qda}{%
+\paragraph{b) QDA}\label{b-qda}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{algae.qda =}\StringTok{ }\NormalTok{MASS}\OperatorTok{::}\KeywordTok{qda}\NormalTok{(a1}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{algae, }\DataTypeTok{CV=}\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{algae.qda.pred =}\StringTok{ }\KeywordTok{prediction}\NormalTok{(algae.qda}\OperatorTok{$}\NormalTok{posterior[,}\DecValTok{2}\NormalTok{], algae}\OperatorTok{$}\NormalTok{a1)}
+\NormalTok{algae.qda.perf =}\StringTok{ }\KeywordTok{performance}\NormalTok{(algae.qda.pred, }\DataTypeTok{measure =} \StringTok{'tpr'}\NormalTok{, }\DataTypeTok{x.measure =} \StringTok{'fpr'}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(algae.lda.perf, }\DataTypeTok{col=}\StringTok{'red'}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(algae.qda.perf, }\DataTypeTok{col=}\StringTok{'blue'}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{, }\DataTypeTok{add=}\OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"bottomright"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"LDA"}\NormalTok{, }\StringTok{"QDA"}\NormalTok{), }\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{),}\DataTypeTok{lty=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{homework2-handout_files/figure-latex/unnamed-chunk-13-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(algae.lda.auc <-}\StringTok{ }\KeywordTok{performance}\NormalTok{(algae.lda.pred, }\StringTok{"auc"}\NormalTok{)}\OperatorTok{@}\NormalTok{y.values) }\CommentTok{# 0.7517825}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0.7517825
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(algae.qda.auc <-}\StringTok{ }\KeywordTok{performance}\NormalTok{(algae.qda.pred, }\StringTok{"auc"}\NormalTok{)}\OperatorTok{@}\NormalTok{y.values) }\CommentTok{# 0.7534406}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 0.7534406
+\end{verbatim}
+
+
+\end{document}
